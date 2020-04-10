@@ -1,0 +1,13 @@
+.opera {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.exit {
+  padding: 20px 10px;
+}
+
+.btn-exit {
+  width: 100%;
+}

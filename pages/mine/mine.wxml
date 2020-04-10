@@ -1,0 +1,51 @@
+<scroll-view scroll-y class="scrollPage">
+	<cu-custom bgImage="http://ahriknow.oss-cn-beijing.aliyuncs.com/ahribookwx/images/bg.jpg">
+		<view slot="content">
+			<text>我的笔记</text>
+		</view>
+	</cu-custom>
+	<view class="cu-modal {{show?'show':''}}">
+		<view class="cu-dialog">
+			<view class="cu-bar bg-white justify-end">
+				<view class="content">请登录</view>
+			</view>
+			<view class="padding-xl">
+				<view class="cu-form-group margin-top">
+					<input placeholder="请输入用户名" id="username" bindinput="bindKeyInput"></input>
+				</view>
+				<view class="cu-form-group margin-top">
+					<input placeholder="请输入密码" type="password" id="password" bindinput="bindKeyInput"></input>
+				</view>
+				<view class="opera">
+					<button class="cu-btn round line-red shadow" bindtap='cancel'>取消</button>
+					<button class="cu-btn round line-olive shadow" bindtap='login'>登录</button>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="cu-modal {{loading?'show':''}}">
+		<image src="/images/loading.gif" mode="aspectFit" class="gif-black response" style="height:240rpx"></image>
+	</view>
+	<view class="exit">
+		<button class="cu-btn round bg-red shadow btn-exit" bindtap='exit'>退 出</button>
+	</view>
+	<block wx:for="{{books}}" wx:key="index">
+		<view class="cu-card article" bindtap="toRead" data-val="{{item}}">
+			<view class="cu-item shadow">
+				<view class="title">
+					<view class="text-cut">{{item.name}}</view>
+				</view>
+				<view class="content">
+					<image src="{{item.image}}" mode="aspectFill" lazy-load></image>
+					<view class="desc">
+						<view class="text-content">{{item.describe}}</view>
+						<view>
+							<view class="cu-tag bg-green light sm round">{{item.nickname}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<view class="cu-tabbar-height"></view>
+</scroll-view>
